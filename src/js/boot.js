@@ -4,27 +4,44 @@
     function Boot() {}
 
     Boot.prototype = {
+
+        init: function () {
+            // Unless you specifically know your game needs to support
+            // multi-touch I would recommend setting this to 1
+            this.input.maxPointers = 1;
+
+            // Phaser will automatically pause if the browser tab the game is
+            // in loses focus. You can disable that here:
+            this.stage.disableVisibilityChange = true;
+
+            // Loading screen will have a black background
+            this.stage.backgroundColor = '#000';
+
+            if(this.game.device.desktop) {
+                this.scale.pageAlignHorizontally = true;
+            } else {
+                this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+                this.scale.setMinMax(480, 260, 1280, 720);
+
+                // Have the game centered
+                this.scale.pageAlignHorizontally = true;
+                this.scale.pageAlignVertically = true;
+
+                // Screen size will be set automatically
+                this.scale.setScreenSize(true);
+
+                this.scale.refresh();
+            }
+        },
         
         preload: function () {
             this.load.image('preloader', 'assets/preloader.gif');
         },
 
         create: function () {
-            this.game.input.maxPointers = 1;
-
-            if (this.game.device.desktop) {
-                this.game.scale.pageAlignHorizontally = true;
-            } else {
-                this.game.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-                this.game.scale.minWidth = 480;
-                this.game.scale.minHeight = 260;
-                this.game.scale.maxWidth = 640;
-                this.game.scale.maxHeight = 480;
-                this.game.scale.forceLandscape = true;
-                this.game.scale.pageAlignHorizontally = true;
-                this.game.scale.setScreenSize(true);
-            }
-            this.game.state.start('preloader');
+            // By this point the preloader assets have loaded to the cache,
+            // we've set the game settings
+            this.state.start('preloader');
         }
     };
 
