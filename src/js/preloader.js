@@ -1,38 +1,36 @@
-(function() {
-    'use strict';
+'use strict';
 
-    function Preloader() {
+var Preloader = function () {};
+
+module.exports = Preloader;
+
+Preloader.prototype = {
+
+    init: function () {
         this.asset = null;
         this.ready = false;
-    }
+    },
 
-    Preloader.prototype = {
+    preload: function () {
+        this.asset = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'preloader');
+        this.asset.anchor.setTo(0.5);
 
-        preload: function () {
-            this.asset = this.add.sprite(320, 240, 'preloader');
-            this.asset.anchor.setTo(0.5, 0.5);
+        this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
+        this.load.setPreloadSprite(this.asset);
+        this.load.image('player', 'assets/player.png');
+    },
 
-            this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
-            this.load.setPreloadSprite(this.asset);
-            this.load.image('player', 'assets/player.png');
-        },
+    create: function () {
+        this.asset.cropEnabled = false;
+    },
 
-        create: function () {
-            this.asset.cropEnabled = false;
-        },
-
-        update: function () {
-            if (!!this.ready) {
-                this.game.state.start('menu');
-            }
-        },
-
-        onLoadComplete: function () {
-            this.ready = true;
+    update: function () {
+        if(!!this.ready) {
+            this.game.state.start('Menu');
         }
-    };
+    },
 
-    window['phaser-template'] = window['phaser-template'] || {};
-    window['phaser-template'].Preloader = Preloader;
-
-}());
+    onLoadComplete: function () {
+        this.ready = true;
+    }
+};

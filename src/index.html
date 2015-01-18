@@ -3,35 +3,35 @@
 <head>
     <meta charset="utf-8">
     <title>phaser-template</title>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1, IE=9">
     <meta name="format-detection" content="telephone=no" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="robots" content="noindex,nofollow" />
     <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <meta name="viewport" content="initial-scale=1 maximum-scale=1 user-scalable=0 minimal-ui" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <!-- build:css css/main.min.css -->
-    <link rel="stylesheet" href="css/main.css"> 
+    <!-- build:css css/main.css -->
+    <link rel="stylesheet" href="css/main.css">
     <!-- /build -->
 </head>
 
 <body>
-  
-    <div id="phaser-template-game" class="game"></div>
+    <div id="game"></div>
+    <div id="orientation"></div>
 
     <!-- build:remove -->
-    <script src="http://localhost:35729/livereload.js"></script>  
+    <script src="http://localhost:35729/livereload.js"></script>
     <!-- /build -->
 
-    <!-- build:js main.min.js -->
-    <script src="bower_components/phaser-official/build/phaser.min.js"></script>
+    <!-- build:js js/lib/phaser.js -->
+    <script src="bower_components/phaser-official/build/phaser.js"></script>
+    <!-- /build -->
 
-    <script src="js/boot.js"></script>
-    <script src="js/preloader.js"></script>
-    <script src="js/menu.js"></script>
-    <script src="js/game.js"></script>
+    <!-- build:js js/main.js -->
     <script src="js/main.js"></script>
     <!-- /build -->
 
 </body>
 </html>
-

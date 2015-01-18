@@ -1,24 +1,22 @@
-(function() {
-    'use strict';
+'use strict';
 
-    function Game() {
-    }
+var Game = function () {};
 
-    Game.prototype = {
+module.exports = Game;
 
-        create: function () {
-        },
+Game.prototype = {
 
-        update: function () {
-        },
+    create: function () {
+        this.input.onDown.add(this.processClick, this);
+    },
 
-        onInputDown: function () {
-            this.game.state.start('menu');
-        }
+    update: function () {
+    },
 
-    };
+    processClick: function () {
+    },
 
-    window['phaser-template'] = window['phaser-template'] || {};
-    window['phaser-template'].Game = Game;
+    render: function () {
+    },
 
-}());
+};

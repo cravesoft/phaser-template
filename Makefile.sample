@@ -1,0 +1,23 @@
+EXEC=phaser-template
+PASSWORD=
+ZIP_ALIGN=zipalign
+JAR_SIGNER=jarsigner
+
+init:
+	cordova platform add android
+	#cordova platform add ios
+	rm -rf www
+	ln -s ../dist www
+
+test:
+	cordova build android
+	cordova run android
+
+build:
+	cordova build android --release
+	$(JAR_SIGNER) -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $(EXEC).keystore -storepass $(PASSWORD) platforms/android/ant-build/CordovaApp-release-unsigned.apk $(EXEC)
+	$(JAR_SIGNER) -verify -verbose -certs platforms/android/ant-build/CordovaApp-release-unsigned.apk
+	@rm -f $(EXEC).apk
+	$(ZIP_ALIGN) -v 4 platforms/android/ant-build/CordovaApp-release-unsigned.apk $(EXEC).apk
+	
+.PHONY: test build

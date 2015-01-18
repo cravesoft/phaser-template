@@ -1,36 +1,35 @@
 {
-    "name": "phaser-template",
-    "description": "",
-    "readme": "",
-    "repository": "",
-    "version": "0.0.0",
-    "readme": "",
-    "repository": "",
-    "dependencies": {},
-    
-    "devDependencies": {
-        "bower": "*",
-        "gulp": "*",
-        "gulp-util": "*",
-        "gulp-clean": "*",
-        "gulp-concat": "*",
-        "gulp-download": "*",
-        "gulp-rename": "*",
-        "gulp-minify-css": "*",
-        "gulp-minify-html": "*",
-        "gulp-processhtml": "*",
-        "gulp-jshint": "*",
-        "gulp-uglify": "*",
-        "gulp-connect": "*",
-        "gulp-watch": "*",
-        "tiny-lr": "*"
-    },
-
-    "scripts": {
-        "post-install": "node ./node_modules/bower/bin/bower install",
-        "start": "node ./node_modules/gulp/bin/gulp.js",
-
-        "build": "node ./node_modules/gulp/bin/gulp.js build",
-        "lint": "node ./node_modules/gulp/bin/gulp.js lint"
-    }
+  "name": "phaser-template",
+  "description": "",
+  "readme": "",
+  "repository": "",
+  "version": "0.0.1",
+  "dependencies": {
+    "i18next-client": "^1.7.7",
+    "jquery": "^2.1.3"
+  },
+  "devDependencies": {
+    "bower": "*",
+    "gulp": "*",
+    "gulp-connect": "*",
+    "gulp-if": "*",
+    "gulp-jshint": "*",
+    "gulp-minify-css": "*",
+    "gulp-minify-html": "*",
+    "gulp-processhtml": "*",
+    "gulp-rimraf": "*",
+    "gulp-streamify": "*",
+    "gulp-uglify": "*",
+    "gulp-util": "*",
+    "gulp-watch": "*",
+    "i18next-client": "*",
+    "tiny-lr": "*",
+    "vinyl-source-stream": "*"
+  },
+  "scripts": {
+    "post-install": "node ./node_modules/bower/bin/bower install",
+    "start": "node ./node_modules/gulp/bin/gulp.js",
+    "build": "node ./node_modules/gulp/bin/gulp.js build",
+    "lint": "node ./node_modules/gulp/bin/gulp.js lint"
+  }
 }

@@ -1,14 +1,24 @@
-window.onload = function () {
-    'use strict';
+'use strict';
 
-    var game
-      , ns = window['phaser-template'];
+var i18n = require('i18next-client')
+  , game = new Phaser.Game(720, 1280, Phaser.AUTO, 'game');
+game.state.add('Boot',  require('./boot'));
+game.state.add('Preloader', require('./preloader'));
+game.state.add('Menu', require('./menu'));
+game.state.add('Game', require('./game'));
 
-    game = new Phaser.Game(1280, 720, Phaser.AUTO, 'phaser-template-game');
-    game.state.add('boot', ns.Boot);
-    game.state.add('preloader', ns.Preloader);
-    game.state.add('menu', ns.Menu);
-    game.state.add('game', ns.Game);
+var lang = (navigator.language.split('-')[0]);
 
-    game.state.start('boot');
-};
+i18n.init({
+    lng: lang,
+    lngWhitelist: ['en', 'fr'],
+    ns: { namespaces: ['ns.common', 'ns.special'], defaultNs: 'ns.special'},
+    load: 'current',
+    getAsync: true,
+    useLocalStorage: false,
+    useCookie: false,
+    fallbackLng: 'en',
+    debug: true
+}).done( function() {
+    game.state.start('Boot');
+});
